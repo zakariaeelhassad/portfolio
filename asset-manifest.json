@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.c1ebabb7.css",
+    "main.js": "/portfolio/static/js/main.59852c03.js",
+    "static/js/488.d4b0d75c.chunk.js": "/portfolio/static/js/488.d4b0d75c.chunk.js",
+    "static/media/Firefly_20241227125616.png": "/portfolio/static/media/Firefly_20241227125616.c67470aa2495be3192d9.png",
+    "static/media/mon_image.png": "/portfolio/static/media/mon_image.f12a6becc3607873c12e.png",
+    "static/media/libeUp-image.jpg": "/portfolio/static/media/libeUp-image.0af09d7a0ef78aeeb4a8.jpg",
+    "static/media/Evento-image.jpg": "/portfolio/static/media/Evento-image.8c2f294e7fa49edbe2de.jpg",
+    "static/media/MajesticCup-image.jpg": "/portfolio/static/media/MajesticCup-image.49b4f837cf3b85816a3a.jpg",
+    "static/media/smartBank-image.jpg": "/portfolio/static/media/smartBank-image.6a6f16ba0d352fa92856.jpg",
+    "static/media/Lens2-mg.jpg": "/portfolio/static/media/Lens2-mg.8b977d553537fae478be.jpg",
+    "static/media/sang.webp": "/portfolio/static/media/sang.a152423c9f879ac267d8.webp",
+    "static/media/bank.jpg": "/portfolio/static/media/bank.0e1d20cf1b55068b6fdc.jpg",
+    "index.html": "/portfolio/index.html",
+    "main.c1ebabb7.css.map": "/portfolio/static/css/main.c1ebabb7.css.map",
+    "main.59852c03.js.map": "/portfolio/static/js/main.59852c03.js.map",
+    "488.d4b0d75c.chunk.js.map": "/portfolio/static/js/488.d4b0d75c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1ebabb7.css",
+    "static/js/main.59852c03.js"
+  ]
+}

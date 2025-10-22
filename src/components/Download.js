@@ -5,11 +5,11 @@ const AboutMe = () => {
 
   const handleDownload = () => {
     try {
-      const cvPath = '/assets/HAMZA LAMIN (FR).pdf';
+      const cvPath = '/assets/ZAKARIAE EL HASSAD (FR).pdf';
       
       const link = document.createElement('a');
       link.href = cvPath;
-      link.download = encodeURIComponent('HAMZA LAMIN (FR).pdf');
+      link.download = encodeURIComponent('ZAKARIAE EL HASSAD (FR).pdf');
       
       document.body.appendChild(link);
       link.click();

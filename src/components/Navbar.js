@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const navItems = ["About", "Projects", "Skills", "Contact"];
 
   useEffect(() => {
@@ -27,11 +28,24 @@ const Navbar = () => {
 
   const scrollToSection = (section) => {
     setIsOpen(false);
-    scroller.scrollTo(section, {
-      smooth: true,
-      offset: -50,
-      duration: 500,
-    });
+
+    // 🔹 إذا ماشي فـ الصفحة الرئيسية، رجّعها قبل ما تسكروّل
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        scroller.scrollTo(section, {
+          smooth: true,
+          offset: -50,
+          duration: 500,
+        });
+      }, 400);
+    } else {
+      scroller.scrollTo(section, {
+        smooth: true,
+        offset: -50,
+        duration: 500,
+      });
+    }
   };
 
   return (
@@ -114,7 +128,7 @@ const Navbar = () => {
             className="absolute inset-0 bg-gray-900/95 backdrop-blur-md"
             onClick={() => setIsOpen(false)}
           ></div>
-          <nav 
+          <nav
             className="relative h-full flex flex-col items-center justify-center space-y-8 text-2xl"
             onClick={() => setIsOpen(false)}
           >

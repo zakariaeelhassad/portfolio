@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaDatabase, FaCode, FaDesktop, FaLaptopCode } from "react-icons/fa";
 
 import { ExternalLink, Github, ChevronRight, X } from "lucide-react";
-import ITLens from "../images/Lens2-mg.jpg";
-import MajesticCup from "../images/MajesticCup-image.jpg";
-import LibeUp from "../images/libeUp-image.jpg";
+import maquette from "../images/maquette-670c4f1936d80809758425.webp";
+import TodoList from "../images/téléchargement.png";
+import PackManage from "../images/PackManage.webp";
 import Card from "../images/bank.jpg";
-import Evento from "../images/Evento-image.jpg";
+import youdemy from "../images/youdemy.webp";
 import Portfolio from "../images/Firefly_20241227125616.png";
+import fut from "../images/fut.png";
 
 import SmartBank from "../images/smartBank-image.jpg";
 import crypto from "../images/Crypto.jpg";
@@ -99,36 +100,13 @@ const Projects = () => {
         "Architecture MVC multicouches respectant SOLID et utilisant Repository/Singleton Pattern"
       ],
     },
-
-
-
-    {
-      title: "SmartBank : Simulation de Crédit",
-      description:
-        "SmartBank offre une interface intuitive pour simuler des prêts personnels et hypothécaires, guidant l’utilisateur pas à pas.",
-      longDescription: `SmartBank simplifie la simulation de crédit avec une interface intuitive et des mises à jour en temps réel. L’utilisateur navigue à travers trois onglets—informations financières, personnelles et contacts—et voit un résumé en direct des détails du prêt, y compris montant, taux d’intérêt, mensualités et coût total. Développée avec HTML, Sass et JavaScript (ES6), la plateforme offre une expérience fluide et responsive. Selenium est utilisé pour les tests automatisés afin d’assurer le bon fonctionnement de toutes les interactions.`,
-      link: "https://github.com/hamzalamin/SmartBank",
-      demo: "#",
-      imageUrl: SmartBank,
-      technologies:
-        "Java EE, JPA, Hibernate, JSP, SASS, JavaScript, JUnit, Mockito, Tomcat",
-      category: "fullstack",
-      highlights: [
-        "Processus de simulation de prêt étape par étape",
-        "Résumé dynamique en temps réel avec JavaScript",
-        "Interface moderne et épurée",
-        "Responsive design pour mobiles",
-        "Flux efficace de saisie et calcul",
-      ],
-    },
-
     {
       title: "Mon Portfolio",
       description:
         "Ceci est mon portfolio personnel, présentant mes compétences, projets et réalisations en développement web.",
       longDescription: `**Mon Portfolio** met en avant mes compétences techniques et ma créativité avec un design responsive adapté à tous les écrans. Mise en page claire présentant compétences et projets de manière professionnelle. Les éléments interactifs améliorent l’expérience utilisateur avec navigation fluide et animations engageantes.`,
-      link: "https://github.com/hamzalamin/Portfolio-react",
-      demo: "https://hamzalamin.github.io/Portfolio-react/",
+      link: "https://github.com/zakariaeelhassad/Portfolio",
+      demo: "https://portfolio-t6ar.vercel.app/",
       imageUrl: Portfolio,
       technologies: "React.js, Tailwind CSS",
       category: "frontend",
@@ -137,6 +115,100 @@ const Projects = () => {
         "Présentation des compétences en développement web",
         "Optimisé pour la performance",
         "Composants personnalisables",
+      ],
+    },
+    {
+      title: "PhoneLaunch",
+      description:
+        "Une landing page pour le lancement d'une marque de téléphone, présentant les sections principales du produit avec un design attractif et moderne.",
+      longDescription: `**Landing Page Téléphone** met en avant le nouveau produit avec une mise en page claire et responsive. La page comporte un header, trois sections principales, et un footer, avec utilisation des grilles CSS et flexbox pour un design adaptable à tous les écrans. La navigation est fluide et l’expérience utilisateur optimisée grâce aux éléments interactifs et au respect fidèle de la maquette fournie.`,
+      link: "https://github.com/zakariaeelhassad/PhoneLaunch/",
+      demo: "https://zakariaeelhassad.github.io/PhoneLaunch/",
+      imageUrl: maquette,
+      technologies: "HTML, CSS, Figma",
+      category: "frontend",
+      highlights: [
+        "Design fidèle à la maquette fournie",
+        "Page responsive pour tous les écrans",
+        "Utilisation de grilles CSS et flexbox",
+        "Navigation fluide et éléments interactifs",
+      ],
+    },
+    {
+      title: "TODO-LIST",
+      description:
+        "Application web de gestion des tâches développée pour améliorer la productivité et l’organisation des projets d’équipe.",
+      longDescription: `**TODO-LIST** est une application moderne et intuitive permettant aux utilisateurs de créer, suivre et organiser leurs tâches efficacement. 
+    Elle offre une interface claire avec un design responsive grâce à **Tailwind CSS**, et propose des fonctionnalités avancées telles que l’ajout, la modification, la suppression et le tri des tâches par priorité ou date d’échéance. 
+    L’intégration de **LocalStorage** garantit la persistance des données après actualisation, tandis que les animations et le **drag & drop** rendent l’expérience utilisateur fluide et agréable.`,
+      link: "https://github.com/zakariaeelhassad/TODO-LIST",
+      demo: "https://zakariaeelhassad.github.io/TODO-LIST/public/",
+      imageUrl: TodoList,
+      technologies: "HTML, CSS (Tailwind), JavaScript",
+      category: "frontend",
+      highlights: [
+        "Interface moderne et responsive",
+        "Ajout, modification et suppression de tâches",
+        "Tri et filtrage par priorité ou date d’échéance",
+        "Sauvegarde locale via LocalStorage",
+        "Gestion du statut des tâches avec drag & drop",
+        "Accessibilité conforme aux normes WCAG"
+      ],
+    },
+    {
+      title: "PackManage",
+      description:
+        "Une application web centralisée pour la gestion des packages JavaScript et de leurs auteurs.",
+      longDescription: `**JS Package Manager** est un système moderne permettant à une communauté de développeurs JavaScript de centraliser la gestion de leurs packages et des auteurs qui y contribuent. L'application facilite la recherche, l’ajout et la mise à jour des packages tout en assurant une meilleure organisation des informations grâce à une base de données bien structurée et une interface claire.`,
+      link: "https://github.com/zakariaeelhassad/PackManage/",
+      demo: "https://github.com/zakariaeelhassad/PackManage/",
+      imageUrl: PackManage,
+      technologies: "PHP, MySQL, HTML, CSS, JavaScript",
+      category: "fullstack",
+      highlights: [
+        "Gestion complète des packages, auteurs et versions",
+        "Recherche rapide par auteur ou mot-clé",
+        "Architecture claire basée sur un schéma relationnel",
+        "Formulaires dynamiques pour ajouter et modifier les données",
+        "Interface utilisateur simple et intuitive"
+      ]
+    },
+    {
+      title: "Youdemy",
+      description:
+        "Une plateforme de cours en ligne interactive et personnalisée pour les étudiants et les enseignants.",
+      longDescription: `**Youdemy** révolutionne l'apprentissage en ligne en offrant un système interactif et personnalisé. Les étudiants peuvent parcourir le catalogue, consulter les détails des cours et s'inscrire facilement, tandis que les enseignants peuvent gérer leurs cours, suivre les inscriptions et accéder aux statistiques. L’administrateur supervise les utilisateurs et le contenu pour garantir une expérience fluide et sécurisée.`,
+      link: "https://github.com/zakariaeelhassad/Youdemy",
+      demo: "https://github.com/zakariaeelhassad/Youdemy",
+      imageUrl: youdemy,
+      technologies: "PHP, Twig, MySQL, HTML, CSS, JavaScript",
+      category: "fullstack",
+      highlights: [
+        "Gestion des rôles : Étudiant, Enseignant, Administrateur",
+        "Catalogue de cours avec pagination et recherche par mots-clés",
+        "Gestion complète des cours et inscriptions pour les enseignants",
+        "Système d’authentification et contrôle d’accès sécurisé",
+        "Statistiques détaillées pour les enseignants et l’administrateur",
+        "Relations complexes en base de données (one-to-many, many-to-many)",
+      ],
+    },
+    {
+      title: "FUT",
+      description:
+        "Une application interactive permettant de construire son équipe Ultimate Team (FUT) avec gestion des formations tactiques et des joueurs.",
+      longDescription: `**FUT** est une application web dynamique qui permet aux utilisateurs de créer et gérer leur propre équipe de football virtuelle selon des formations tactiques comme **4-3-3**. L’utilisateur peut ajouter, positionner et modifier les joueurs tout en respectant les contraintes des formations. L’expérience repose sur une interface fluide et intuitive, avec une gestion des données via **localStorage** pour sauvegarder automatiquement la composition de l’équipe.`,
+      link: "https://github.com/zakariaeelhassad/Fut",
+      demo: "https://zakariaeelhassad.github.io/Fut/public/",
+      imageUrl: fut,
+      technologies: "HTML, CSS, JavaScript",
+      category: "frontend",
+      highlights: [
+        "Création dynamique de joueurs avec nom, poste et statistiques",
+        "Positionnement automatique selon la formation sélectionnée (ex. 4-3-3)",
+        "Interface visuelle interactive pour organiser les joueurs sur le terrain",
+        "Limitation à 11 joueurs titulaires et gestion des remplaçants",
+        "Sauvegarde locale via localStorage pour persister les données",
+        "Expérience fluide et responsive pour tous les formats d’écran"
       ],
     },
   ];

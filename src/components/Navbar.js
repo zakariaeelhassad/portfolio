@@ -29,7 +29,6 @@ const Navbar = () => {
   const scrollToSection = (section) => {
     setIsOpen(false);
 
-    // 🔹 إذا ماشي فـ الصفحة الرئيسية، رجّعها قبل ما تسكروّل
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {

@@ -121,25 +121,26 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative w-[380px] h-[380px] md:w-[450px] md:h-[450px] mx-auto rounded-full overflow-hidden shadow-2xl border-2 border-cyan-400/30">
-            <div className="relative z-10 rounded-full overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-800 to-gray-900 rounded-full" />
-              <ParticleNetwork />
+          <div className="relative mx-auto flex justify-center items-center">
+            <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] rounded-full overflow-hidden shadow-2xl border-2 border-cyan-400/30">
+              <div className="relative z-10 rounded-full overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-800 to-gray-900 rounded-full" />
+                <ParticleNetwork />
 
-              <img
-                src={myImage}
-                alt="Zakariae El Hassad"
-                className={`w-full h-full object-cover transition-opacity duration-700 scale-110 ${
-                  isImageLoaded ? "opacity-100" : "opacity-0"
-                } rounded-full`}
-                onLoad={() => setIsImageLoaded(true)}
-              />
+                <img
+                  src={myImage}
+                  alt="Zakariae El Hassad"
+                  className={`w-full h-full object-cover transition-opacity duration-700 scale-110 ${
+                    isImageLoaded ? "opacity-100" : "opacity-0"
+                  } rounded-full`}
+                  onLoad={() => setIsImageLoaded(true)}
+                />
+              </div>
+
+              <div className="absolute -inset-4 bg-cyan-400/15 rounded-full blur-xl -z-10 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent rounded-full -z-20 animate-gradient" />
             </div>
-
-            <div className="absolute -inset-4 bg-cyan-400/15 rounded-full blur-xl -z-10 animate-pulse" />
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent rounded-full -z-20 animate-gradient" />
           </div>
-
           
         </div>
       </div>

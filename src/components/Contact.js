@@ -7,6 +7,7 @@ import {
   User,
   MessageSquare,
 } from "lucide-react";
+import emailjs from "emailjs-com"; // ✅ ajouté
 
 const InputField = ({ icon: Icon, label, ...props }) => (
   <div className="relative">
@@ -57,19 +58,33 @@ const Contact = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    setTimeout(() => {
-      setStatus({
-        type: "success",
-        message: "✨ Message envoyé avec succès ! Nous vous répondrons bientôt.",
+    emailjs
+      .sendForm(
+        "service_ud1je0h", 
+        "template_3c8p9hf", 
+        e.target,
+        "0XH-ylqHhKPQ77rm_"
+      )
+      .then(() => {
+        setStatus({
+          type: "success",
+          message: "✅ Le message a été envoyé avec succès !",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setCharCount(0);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setStatus({
+          type: "error",
+          message: "❌ Échec de l'envoi, veuillez réessayer.",
+        });
+        setIsLoading(false);
       });
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setIsLoading(false);
-      setCharCount(0);
-    }, 2000);
   };
 
   const handleMessageChange = (e) => {
@@ -131,6 +146,7 @@ const Contact = () => {
                       icon={User}
                       label="Nom"
                       type="text"
+                      name="name" 
                       required
                       value={formData.name}
                       onChange={(e) =>
@@ -142,6 +158,7 @@ const Contact = () => {
                       icon={Mail}
                       label="Email"
                       type="email"
+                      name="email" 
                       required
                       value={formData.email}
                       onChange={(e) =>
@@ -155,6 +172,7 @@ const Contact = () => {
                     icon={MessageSquare}
                     label="Sujet"
                     type="text"
+                    name="subject" 
                     required
                     value={formData.subject}
                     onChange={(e) =>
@@ -169,6 +187,7 @@ const Contact = () => {
                     </label>
                     <textarea
                       required
+                      name="message" 
                       value={formData.message}
                       onChange={handleMessageChange}
                       rows={6}

@@ -23,7 +23,7 @@ const About = () => {
       title: "Experience",
       icon: <FaLaptopCode className="w-6 h-6" />,
       description:
-        "En 2024, j’ai acquis une expérience pratique en tant que développeur Full-Stack au sein de ECOWATT MAROC, une startup. Pendant quatre mois, j’ai travaillé avec PHP/Laravel 10 pour le backend et React.js pour le frontend. Ce poste m’a non seulement permis d’améliorer mes compétences techniques, mais aussi de comprendre l’importance du travail d’équipe, du respect des délais et de l’adaptation dans un environnement dynamique.",
+        "En 2024, j’ai acquis une expérience pratique en tant que développeur Full-Stack au sein de ECOWATT MAROC, une startup. Pendant 2 mois, j’ai travaillé avec PHP/Laravel 10 pour le backend et React.js pour le frontend. Ce poste m’a non seulement permis d’améliorer mes compétences techniques, mais aussi de comprendre l’importance du travail d’équipe, du respect des délais et de l’adaptation dans un environnement dynamique.",
       skills: [
         "Full Stack",
         "Laravel 10",

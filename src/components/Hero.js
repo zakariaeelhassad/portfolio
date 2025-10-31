@@ -7,10 +7,10 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const phrases = [
-    "Full-Stack Developer",
-    "Problem Solver",
-    "Creative Thinker",
-    "Software architect",
+    "Développeur Full-Stack",
+    "Résolveur de problèmes",
+    "Esprit créatif",
+    "Architecte logiciel"
   ];
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
 

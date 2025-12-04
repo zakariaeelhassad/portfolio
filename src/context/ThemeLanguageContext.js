@@ -5,7 +5,6 @@ const ThemeLanguageContext = createContext();
 export const useThemeLanguage = () => useContext(ThemeLanguageContext);
 
 export const ThemeLanguageProvider = ({ children }) => {
-  // Default to Dark mode (to keep original design as default) and French
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [language, setLanguage] = useState('fr');
 
@@ -31,6 +30,7 @@ export const ThemeLanguageProvider = ({ children }) => {
       contact: { fr: "Contact", en: "Contact" },
       
       // Hero
+      iam: { fr: "Je suis un", en: "I am a" },
       greeting: { fr: "Salut, je suis", en: "Hi, I am" },
       roles: { 
         fr: ["Développeur Full-Stack", "Résolveur de problèmes", "Esprit créatif", "Architecte logiciel"],

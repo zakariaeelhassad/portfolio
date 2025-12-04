@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import myImage from "../images/mon_image.png";
 import ParticleNetwork from './SectionBackground';
@@ -9,36 +9,52 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  // Get dynamic phrases based on language
-  const phrases = t('roles');
+  const phrases = useMemo(() => {
+    return t('roles') || ["Developer", "Designer"];
+  }, [language, t]);
 
   useEffect(() => {
-    // Reset typing when language changes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
+  useEffect(() => {
     setDisplayText("");
     setCurrentPhraseIndex(0);
+    setIsDeleting(false);
   }, [language]);
 
   useEffect(() => {
-    const typeText = async () => {
-      const phrase = phrases[currentPhraseIndex];
-      // Type
-      for (let i = 0; i <= phrase.length; i++) {
-        setDisplayText(phrase.slice(0, i));
-        await new Promise((resolve) => setTimeout(resolve, 100));
+    const phrase = phrases[currentPhraseIndex];
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < phrase.length) {
+          setDisplayText(phrase.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(phrase.slice(0, displayText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+        }
       }
-      // Wait
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // Delete
-      for (let i = phrase.length; i >= 0; i--) {
-        setDisplayText(phrase.slice(0, i));
-        await new Promise((resolve) => setTimeout(resolve, 50));
-      }
-      setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
-    };
+    }, isDeleting ? 50 : 100); 
 
-    typeText();
-  }, [currentPhraseIndex, phrases]);
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhraseIndex, phrases]);
 
   return (
     <section className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white relative overflow-hidden flex items-center transition-colors duration-500">
@@ -56,12 +72,19 @@ const Hero = () => {
               {t('greeting')} <span className="text-cyan-600 dark:text-cyan-400">Zakariae El Hassad</span>
             </h1>
 
-            <div className="h-20">
-              <span className="text-2xl md:text-3xl font-mono text-gray-700 dark:text-white">
-                I am a{" "}
-                <span className="text-cyan-600 dark:text-cyan-400 inline-block min-w-[20ch]">
+            <div className="h-20 flex items-center">
+              <span className="text-2xl md:text-3xl font-mono text-gray-700 dark:text-white flex flex-wrap gap-2">
+                <span className="whitespace-nowrap">{t('iam')}</span>
+                
+                <span className="text-cyan-600 dark:text-cyan-400 inline-block min-w-[200px]">
                   {displayText}
-                  <span className="animate-blink">|</span>
+                  <span 
+                    className="ml-1"
+                    style={{
+                      animation: 'blink 1s infinite',
+                      display: 'inline-block'
+                    }}
+                  >|</span>
                 </span>
               </span>
             </div>
@@ -108,7 +131,7 @@ const Hero = () => {
               <div className="rounded-lg text-center">
                 <button
                   onClick={() => {
-                    document.getElementById("contact").scrollIntoView({
+                    document.getElementById("contact")?.scrollIntoView({
                       behavior: "smooth", 
                       block: "start", 
                     });

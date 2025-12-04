@@ -9,6 +9,8 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import SectionBackground from "./components/SectionBackground";
+import AiChatbot from "./components/AiChatbot"; 
+import { ThemeLanguageProvider } from "./context/ThemeLanguageContext";
 import "aos/dist/aos.css";
 
 const App = () => {
@@ -20,9 +22,10 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
+    <ThemeLanguageProvider>
+      <Router>
         <SectionBackground />
-        <section className="min-h-screen bg-transparent">
+        <section className="min-h-screen bg-transparent transition-colors duration-500">
           <div className="font-sans relative z-10">
             <Navbar />
             <main className="mt-16">
@@ -48,9 +51,11 @@ const App = () => {
               </Routes>
             </main>
             <Footer />
+            <AiChatbot /> 
           </div>
         </section>
       </Router>
+    </ThemeLanguageProvider>
   );
 };
 

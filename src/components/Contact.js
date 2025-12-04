@@ -7,20 +7,21 @@ import {
   User,
   MessageSquare,
 } from "lucide-react";
-import emailjs from "emailjs-com"; // ✅ ajouté
+import emailjs from "emailjs-com";
+import { useThemeLanguage } from "../context/ThemeLanguageContext";
 
 const InputField = ({ icon: Icon, label, ...props }) => (
   <div className="relative">
-    <label className="block font-mono text-sm text-cyan-400 mb-2">
+    <label className="block font-mono text-sm text-cyan-600 dark:text-cyan-400 mb-2">
       {label}
     </label>
     <div className="relative">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
         <Icon className="w-5 h-5" />
       </div>
       <input
         {...props}
-        className="w-full pl-12 pr-4 py-4 bg-gray-800/50 border border-gray-700 text-white rounded-lg 
+        className="w-full pl-12 pr-4 py-4 bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg 
         focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 
         transition-all duration-300 placeholder:text-gray-500 font-mono"
       />
@@ -29,6 +30,7 @@ const InputField = ({ icon: Icon, label, ...props }) => (
 );
 
 const Contact = () => {
+  const { t } = useThemeLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -72,7 +74,7 @@ const Contact = () => {
       .then(() => {
         setStatus({
           type: "success",
-          message: "✅ Le message a été envoyé avec succès !",
+          message: t('successMsg'),
         });
         setFormData({ name: "", email: "", subject: "", message: "" });
         setCharCount(0);
@@ -81,7 +83,7 @@ const Contact = () => {
       .catch(() => {
         setStatus({
           type: "error",
-          message: "❌ Échec de l'envoi, veuillez réessayer.",
+          message: t('errorMsg'),
         });
         setIsLoading(false);
       });
@@ -100,7 +102,7 @@ const Contact = () => {
       id="contact"
       className={`py-20 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      } bg-gray-900 text-white transition-all duration-700`}
+      } bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-700`}
     >
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         <div className="relative">
@@ -109,26 +111,26 @@ const Contact = () => {
         </div>
 
         <h3 className="text-5xl font-mono text-center mb-6">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-            Contactez-moi
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-500">
+            {t('contactTitle')}
           </span>
         </h3>
 
-        <p className="text-gray-400 text-center mb-16 font-mono max-w-2xl mx-auto">
-          Vous avez une question ou souhaitez collaborer ? Envoyez-moi un message et je vous répondrai dès que possible.
+        <p className="text-gray-600 dark:text-gray-400 text-center mb-16 font-mono max-w-2xl mx-auto">
+          {t('contactSubtitle')}
         </p>
 
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-cyan-200 to-blue-300 rounded blur opacity-25 group-hover:opacity-100" />
 
-          <div className="bg-gray-900/50 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-800">
+          <div className="bg-white/90 dark:bg-gray-900/50 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-0 md:gap-8">
-              <div className="p-8 md:col-span-2 bg-gradient-to-br from-gray-800/50 to-transparent rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
-                <h4 className="font-mono text-xl text-cyan-400 mb-4">
-                  Informations de contact
+              <div className="p-8 md:col-span-2 bg-gradient-to-br from-gray-100/50 to-transparent dark:from-gray-800/50 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
+                <h4 className="font-mono text-xl text-cyan-600 dark:text-cyan-400 mb-4">
+                  {t('contactInfo')}
                 </h4>
-                <p className="text-gray-400 mb-8 font-mono text-sm">
-                  N'hésitez pas à me contacter via ce formulaire ou mes profils sur les réseaux sociaux.
+                <p className="text-gray-600 dark:text-gray-400 mb-8 font-mono text-sm">
+                  {t('contactInfoDesc')}
                 </p>
 
                 <div className="space-y-4 mt-8">
@@ -144,7 +146,7 @@ const Contact = () => {
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <InputField
                       icon={User}
-                      label="Nom"
+                      label={t('name')}
                       type="text"
                       name="name" 
                       required
@@ -156,7 +158,7 @@ const Contact = () => {
                     />
                     <InputField
                       icon={Mail}
-                      label="Email"
+                      label={t('email')}
                       type="email"
                       name="email" 
                       required
@@ -170,7 +172,7 @@ const Contact = () => {
 
                   <InputField
                     icon={MessageSquare}
-                    label="Sujet"
+                    label={t('subject')}
                     type="text"
                     name="subject" 
                     required
@@ -182,8 +184,8 @@ const Contact = () => {
                   />
 
                   <div>
-                    <label className="block font-mono text-sm text-cyan-400 mb-2">
-                      Message
+                    <label className="block font-mono text-sm text-cyan-600 dark:text-cyan-400 mb-2">
+                      {t('message')}
                     </label>
                     <textarea
                       required
@@ -191,20 +193,20 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleMessageChange}
                       rows={6}
-                      className="w-full p-4 bg-gray-800/50 border border-gray-700 text-white rounded-lg 
+                      className="w-full p-4 bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg 
                 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 
                 transition-all duration-300 placeholder:text-gray-500 font-mono resize-none"
-                      placeholder="Votre message ici..."
+                      placeholder={t('message') + "..."}
                     />
-                    <div className="mt-2 text-sm text-cyan-400 text-right font-mono">
-                      {charCount}/{maxChars} caractères
+                    <div className="mt-2 text-sm text-cyan-600 dark:text-cyan-400 text-right font-mono">
+                      {charCount}/{maxChars}
                     </div>
                   </div>
 
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="group relative w-full flex items-center justify-center px-8 py-4 bg-gradient-to-r from-white-400 to-white-500 text-white overflow-hidden rounded-lg transform transition-transform duration-300 hover:scale-105 border border-cyan-400/50 focus:outline-none font-mono"
+                    className="group relative w-full flex items-center justify-center px-8 py-4 bg-gradient-to-r from-gray-100 to-white dark:from-gray-200 dark:to-gray-300 text-gray-900 dark:text-gray-900 overflow-hidden rounded-lg transform transition-transform duration-300 hover:scale-105 border border-cyan-400/50 focus:outline-none font-mono"
                   >
                     <div className="absolute inset-0 w-3 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-[250ms] ease-out group-hover:w-full" />
 
@@ -213,7 +215,7 @@ const Contact = () => {
                         <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       ) : (
                         <>
-                          <span>Envoyer le message</span>
+                          <span>{t('sendMessage')}</span>
                           <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
@@ -228,8 +230,8 @@ const Contact = () => {
                   <div
                     className={`mt-6 p-4 rounded-lg flex items-center space-x-2 ${
                       status.type === "success"
-                        ? "bg-cyan-900/20 text-cyan-400"
-                        : "bg-red-900/20 text-red-400"
+                        ? "bg-cyan-100 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400"
+                        : "bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400"
                     }`}
                   >
                     {status.type === "success" ? (

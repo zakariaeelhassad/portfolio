@@ -8,22 +8,23 @@ import {
 import Profile from "../images/Firefly_20241227125616.png";
 import ParticleNetwork from './SectionBackground';
 import DownloadCv from './Download'; 
+import { useThemeLanguage } from "../context/ThemeLanguageContext";
 
 const About = () => {
   const [activeSection, setActiveSection] = useState(null);
+  const { t } = useThemeLanguage();
+
   const sections = [
     {
-      title: "Education",
+      title: t('educationTitle'),
       icon: <FaGraduationCap className="w-6 h-6" />,
-      description:
-        "Après l’obtention de mon baccalauréat en 2023, j’ai rejoint l’école Youcode pour concrétiser ma passion pour le développement web. J’y ai appris les bases de HTML, CSS, JavaScript, PHP, la POO, l’architecture MVC, ainsi que les frameworks Laravel, React, Bootstrap et Tailwind. En deuxième année, je me suis orienté vers le développement Java afin d’approfondir mes compétences et de relever des défis backend plus avancés.",
+      description: t('educationDesc'),
       skills: ["HTML/CSS", "JavaScript", "PHP", "Laravel", "React", "Java"],
     },
     {
-      title: "Experience",
+      title: t('expTitle'),
       icon: <FaLaptopCode className="w-6 h-6" />,
-      description:
-        "En 2024, j’ai acquis une expérience pratique en tant que développeur Full-Stack au sein de ECOWATT MAROC, une startup. Pendant 2 mois, j’ai travaillé avec PHP/Laravel 10 pour le backend et React.js pour le frontend. Ce poste m’a non seulement permis d’améliorer mes compétences techniques, mais aussi de comprendre l’importance du travail d’équipe, du respect des délais et de l’adaptation dans un environnement dynamique.",
+      description: t('expDesc'),
       skills: [
         "Full Stack",
         "Laravel 10",
@@ -33,10 +34,9 @@ const About = () => {
       ],
     },
     {
-      title: "Agile Methodology",
+      title: t('agileTitle'),
       icon: <FaSlidersH className="w-6 h-6" />,
-      description:
-        "Je crois fermement en la méthodologie Agile, que j’applique dans mes projets. Qu’ils soient personnels ou professionnels, les principes Agile m’aident à rester organisé, à respecter les délais et à améliorer continuellement la qualité de mon travail.",
+      description: t('agileDesc'),
       principles: [
         "Développement itératif",
         "Intégration continue",
@@ -44,30 +44,28 @@ const About = () => {
       ],
     },
     {
-      title: "Interests",
+      title: t('interestsTitle'),
       icon: <FaFootballBall className="w-6 h-6" />,
-      description:
-        "En dehors du développement, je suis passionné par le football. J’ai joué pour Tarrast, une équipe locale de ma ville à Agadir. De plus, j’aime explorer de nouvelles technologies et les intégrer dans des projets concrets. La résolution de problèmes est l’une de mes plus grandes forces, et je cherche toujours à améliorer mes compétences.",
+      description: t('interestsDesc'),
       highlights: ["Footballeur", "Passionné de technologie", "Résolveur de problèmes"],
     },
   ];
 
-  
   return (
-    <section id="about" className="py-16 bg-gray-900 text-white min-h-screen relative overflow-hidden">
+    <section id="about" className="py-16 bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen relative overflow-hidden transition-colors duration-500">
       <ParticleNetwork />
 
       <div className="max-w-6xl mx-auto px-4 md:px-8 relative">
         <h3 className="text-5xl font-mono text-center mb-16">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-            À propos de moi
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-500">
+            {t('aboutTitle')}
           </span>
         </h3>
 
         <div className="relative group mb-24 transform transition-all duration-500 hover:-translate-y-2">
           <div className="absolute inset-1 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-lg group-hover:opacity-75 transition-all duration-1000" />
 
-          <div className="relative bg-gray-800/90 backdrop-blur-sm rounded-lg p-8">
+          <div className="relative bg-gray-50/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-8 shadow-xl dark:shadow-none transition-colors">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-25 group-hover:opacity-100 animate-pulse" />
@@ -80,14 +78,12 @@ const About = () => {
                 <div className="absolute bottom-0 left-0 w-2 h-2 bg-blue-400 rounded-full animate-ping delay-300" />
               </div>
               <div className="flex-1">
-                <h4 className="text-2xl font-mono text-cyan-400 mb-4 relative inline-block">
+                <h4 className="text-2xl font-mono text-cyan-600 dark:text-cyan-400 mb-4 relative inline-block">
                   Zakariae El Hassad
                   <div className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500" />
                 </h4>
-                <p className="text-lg text-gray-300 leading-relaxed font-mono">
-                  Je suis un développeur Full-Stack passionné par la création d’applications web évolutives et d’expériences utilisateurs innovantes. 
-                  Je me spécialise dans les frameworks modernes, 
-                  l’écriture d’un code efficace et les projets collaboratifs qui repoussent les limites du développement.
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-mono">
+                  {t('aboutDesc')}
                 </p>
               </div>
             </div>
@@ -102,24 +98,24 @@ const About = () => {
               onMouseEnter={() => setActiveSection(index)}
               onMouseLeave={() => setActiveSection(null)}
             >
-              <div className="relative bg-gray-800/80 rounded-xl overflow-hidden transition-all duration-500 group-hover:-translate-y-2">
+              <div className="relative bg-white dark:bg-gray-800/80 rounded-xl overflow-hidden transition-all duration-500 group-hover:-translate-y-2 shadow-lg dark:shadow-none">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 animate-border-slide" />
                 
-                <div className="relative m-[2px] bg-gray-800 rounded-xl p-6 h-full">
-                  <div className="absolute -top-2 right-6 p-4 bg-gray-800 rounded-xl border-2 border-cyan-400 transform -rotate-12 transition-transform duration-300 group-hover:rotate-0">
-                    <div className="text-cyan-400">
+                <div className="relative m-[2px] bg-white dark:bg-gray-800 rounded-xl p-6 h-full transition-colors">
+                  <div className="absolute -top-2 right-6 p-4 bg-white dark:bg-gray-800 rounded-xl border-2 border-cyan-400 transform -rotate-12 transition-transform duration-300 group-hover:rotate-0">
+                    <div className="text-cyan-600 dark:text-cyan-400">
                       {section.icon}
                     </div>
                   </div>
 
-                  <h4 className="text-2xl font-mono text-cyan-400 mb-8 relative inline-block">
+                  <h4 className="text-2xl font-mono text-cyan-600 dark:text-cyan-400 mb-8 relative inline-block">
                     {section.title}
                     <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-cyan-400 to-transparent" />
                   </h4>
 
                   <div className="relative overflow-hidden rounded-lg mb-6">
-                    <div className="relative z-10 p-4 bg-gray-800/90 backdrop-blur-sm transition-transform duration-300 group-hover:translate-x-2">
-                      <p className="text-gray-300 leading-relaxed font-mono">
+                    <div className="relative z-10 p-4 bg-gray-50 dark:bg-gray-800/90 backdrop-blur-sm transition-transform duration-300 group-hover:translate-x-2">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed font-mono">
                         {section.description}
                       </p>
                     </div>
@@ -130,7 +126,7 @@ const About = () => {
                       {(section.skills || section.highlights || section.principles)?.map((item, i) => (
                         <span
                           key={i}
-                          className="relative px-4 py-1 bg-gray-700 text-cyan-400 rounded-lg text-sm group/tag"
+                          className="relative px-4 py-1 bg-gray-100 dark:bg-gray-700 text-cyan-700 dark:text-cyan-400 rounded-lg text-sm group/tag transition-colors"
                         >
                           <span className="relative font-mono z-10 transition-colors duration-300 group-hover/tag:text-gray-900">
                             {item}

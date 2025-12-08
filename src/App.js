@@ -25,9 +25,14 @@ const App = () => {
     <ThemeLanguageProvider>
       <Router>
         <SectionBackground />
+        
+        {/* FIX: Kharjna Navbar hna lfou9, bach tkon horra fo9 kolchi */}
+        <Navbar />
+
         <section className="min-h-screen bg-transparent transition-colors duration-500">
           <div className="font-sans relative z-10">
-            <Navbar />
+            {/* Navbar kanet hna, w hna kan l-ghalat. Daba rja3naha fo9 */}
+            
             <main className="mt-16">
               <Routes>
                 <Route
